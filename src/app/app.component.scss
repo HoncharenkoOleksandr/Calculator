@@ -1,0 +1,151 @@
+@import "../styles.scss";
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Indie Flower", cursive;
+  h1 {
+    font-style: normal;
+    font-size: 72px;
+    font-weight: 900;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.calc {
+  &--group {
+    position: relative;
+    background: $background;
+    height: 692px;
+    z-index: 10;
+    &--history {
+      position: absolute;
+      border: 4px solid $primary;
+      background-color: $background;
+      border-radius: 0 16px 16px 0;
+      width: 400px;
+      height: calc(100% - 8px);
+      top: 0;
+      right: 0%;
+      z-index: -1;
+      transition: all ease-in-out 0.3s;
+      overflow: auto;
+      &__active {
+        right: -79%;
+      }
+      &--wrapper {
+        padding: 20px;
+        font-size: 48px;
+        font-weight: 900;
+        color: $secondary;
+      }
+    }
+    &--functions {
+      position: absolute;
+      border: 4px solid $primary;
+      background-color: $background;
+      border-radius: 16px 0 0 16px;
+      height: calc(100% - 8px);
+      top: 0;
+      left: 0%;
+      z-index: -1;
+      transition: all ease-in-out 0.3s;
+      padding: 0 20px;
+      & > div {
+        padding-top: 130px;
+      }
+      &__active {
+        left: -39%;
+      }
+    }
+  }
+  &--btn {
+    &--number {
+      cursor: pointer;
+      min-width: 30px;
+      min-height: 30px;
+      border: 4px solid $primary;
+      border-radius: 16px;
+      background-color: transparent;
+      color: $primary;
+      padding: 10px;
+      font-family: "Indie Flower", cursive;
+      font-size: 48px;
+      font-weight: 900;
+      transition: all ease-in-out 0.1s;
+
+      &__error {
+        border-color: $red;
+        color: $red;
+      }
+      &__secondary {
+        border-color: $secondary;
+        color: $secondary;
+      }
+      &__success {
+        border-color: $green;
+        color: $green;
+      }
+      &:focus {
+        transform: scale(1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  &--wrapper {
+    font-weight: 900;
+    font-style: normal;
+    font-size: 48px;
+    width: 460px;
+    border: 4px solid $primary;
+    border-radius: 16px;
+    padding: 16px;
+    background: $background;
+  }
+  &--data {
+    display: block;
+    min-width: 100%;
+    text-align: end;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    color: $green;
+    border: 4px solid $primary;
+    border-radius: 16px;
+    margin: 12px 0;
+  }
+  &--instruments {
+    &--wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      width: 100%;
+      gap: 12px;
+    }
+    &__numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 12px;
+    }
+    &__operations {
+      min-width: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: stretch;
+      gap: 12px;
+    }
+    &__large {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+}

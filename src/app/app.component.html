@@ -1,0 +1,66 @@
+<section class="main">
+
+  <h1>Calculator</h1>
+
+  <div class="calc--group">
+    <div class="calc--wrapper">
+      <div class="calc--data--warpper">
+        <div class="calc--data">
+          @if (currentData.length === 0) {
+            {{result}}
+          } @else {
+            {{userViewCurrentData}}
+          }
+        </div>
+      </div>
+      <div class="calc--instruments--wrapper">
+        <div class="calc--instruments__numbers">
+          <button class="calc--btn--number calc--btn--number__error calc--instruments__large" (click)="init()">C</button>
+          <button class="calc--btn--number" (click)="showFunctionsHandler()">f(x)</button>
+
+          <button class="calc--btn--number" (click)="addNumber('9')">9</button>
+          <button class="calc--btn--number" (click)="addNumber('8')">8</button>
+          <button class="calc--btn--number" (click)="addNumber('7')">7</button>
+          <button class="calc--btn--number" (click)="addNumber('6')">6</button>
+          <button class="calc--btn--number" (click)="addNumber('5')">5</button>
+          <button class="calc--btn--number" (click)="addNumber('4')">4</button>
+          <button class="calc--btn--number" (click)="addNumber('3')">3</button>
+          <button class="calc--btn--number" (click)="addNumber('2')">2</button>
+          <button class="calc--btn--number" (click)="addNumber('1')">1</button>
+          <button class="calc--btn--number" (click)="addNumber('0')">0</button>
+          <button class="calc--btn--number">,</button>
+          <button class="calc--btn--number calc--btn--number__success" (click)="calc()">=</button>
+        </div>
+        <div class="calc--instruments__operations">
+          <button class="calc--btn--number calc--btn--number__secondary" (click)="showHistoryHandler()">H</button>
+          <button class="calc--btn--number" (click)="addOperation('/')">/</button>
+          <button class="calc--btn--number" (click)="addOperation('*')">*</button>
+          <button class="calc--btn--number" (click)="addOperation('+')">+</button>
+          <button class="calc--btn--number" (click)="addOperation('-')">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="calc--group--history {{showHistory() && 'calc--group--history__active'}}">
+      <div class="calc--group--history--wrapper">
+        @for (history of histories; track history.index) {
+          <span>{{history.data}}</span>
+          <br/>
+        }
+      </div>
+    </div>
+    <div class="calc--group--functions {{showFunctions() && 'calc--group--functions__active'}}">
+      <div class="calc--instruments__operations">
+        <button class="calc--btn--number" (click)="addOperation('/')">sqr(x)</button>
+        <button class="calc--btn--number" (click)="addOperation('/')">sqrt(x)</button>
+        <button class="calc--btn--number" (click)="addOperation('*')">sin(x)</button>
+        <button class="calc--btn--number" (click)="addOperation('+')">cos(x)</button>
+        <button class="calc--btn--number" (click)="addOperation('-')">tan(x)</button>
+      </div>
+    </div>
+  </div>
+  @if (userError) {
+    <span class="calc--error">{{userError}}</span>
+  }
+
+
+</section>
